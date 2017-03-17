@@ -1,0 +1,12 @@
+table {
+  font-size: 80%;;
+}
+
+.firstCol {
+  font-weight: bold;
+  width:15%;
+}
+
+.lastRow {
+  height: 100px;
+}
