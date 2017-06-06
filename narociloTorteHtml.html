@@ -10,6 +10,13 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
+  <script type="text/javascript">
+
+      function fillTextArea() {
+        document.getElementById('narocilo').value = "Ime in priimek:\nNaslov:\nTelefonska številka:\nEmail:\nDatum prevzema:\nUra prevzema:\nOblika:\nTeža:\nDekoracija:\nNapis:\nOkus:\nPriložnost:\nSlika za tisk:\nPosebni napotki/Želje:";
+      }
+  </script>
+
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -19,10 +26,12 @@
   <script src="js/scripts.js"></script>
 
   <form action="narociloTorte.php" method="POST">
-    <textarea name="narocilo" rows ="20" cols="50"></textarea><br>
-    <input type="submit" value="Pošlji">
+    <textarea name="narocilo" id="narocilo" rows ="20" cols="50"></textarea><br>
+    <button type="submit" formaction="narociloTorte.php">Pošlji</button>
+    <button type="submit" formaction="narociloTorteZaJoko.php">Za Joko</button>
   </form>
 
+<button onclick="fillTextArea()">Fill</button>
 
 </body>
 </html>

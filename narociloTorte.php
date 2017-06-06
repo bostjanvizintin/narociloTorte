@@ -1,7 +1,7 @@
 <?php
 
 //$strings = explode('Ime in priimek:', $_POST['narocilo'])[1];
-$strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Datum prevzema:|Ura prevzema:|Oblika:|Teža \(1KG - 7 OSEB\):|Dekoracija:|Napis:|Okus:|Priložnost:|Slika za tisk:|Posebni napotki\/Želje:)/", $_POST['narocilo'] );
+$strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Datum prevzema:|Ura prevzema:|Oblika:|Teža:|Teža \(1KG - 7 OSEB\):|Dekoracija:|Napis:|Okus:|Priložnost:|Slika za tisk:|Posebni napotki\/Želje:)/", $_POST['narocilo'] );
 
 ?>
 
@@ -35,67 +35,55 @@ $strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Da
 <body>
   <script src="js/scripts.js"></script>
 
-  <div class="table-bordered">
-    <table class="table">
+  <div>
+    <table class="table table-bordered">
       <tr>
         <td class="firstCol">Ime in priimek:</td>
-        <td><?php echo $strings[1]; ?></td>
+        <td class="secondCol"><?php echo $strings[1]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Naslov:</td>
-        <td><?php echo $strings[2]; ?></td>
+        <td class="secondCol"><?php echo $strings[2]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Telefonska številka:</td>
-        <td><?php echo $strings[3]; ?></td>
+        <td class="secondCol"><?php echo $strings[3]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Email:</td>
-        <td><?php echo $strings[4]; ?></td>
+        <td class="secondCol"><?php echo $strings[4]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Datum prevzema:</td>
-        <td><?php echo $strings[5]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Ura prevzema:</td>
-        <td><?php echo $strings[6]; ?></td>
+        <td class="secondCol"><?php echo $strings[5].' / '.$strings[6]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Oblika:</td>
-        <td><?php echo $strings[7]; ?></td>
+        <td class="secondCol"><?php echo $strings[7]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Teža:</td>
-        <td><?php echo $strings[8]; ?></td>
+        <td class="secondCol"><?php echo $strings[8]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Dekoracija:</td>
-        <td><?php echo $strings[9]; ?></td>
+        <td class="secondCol"><?php echo $strings[9]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Napis:</td>
-        <td><?php echo $strings[10]; ?></td>
+        <td class="secondCol"><?php echo $strings[10]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Okus:</td>
-        <td><?php echo $strings[11]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Priložnost:</td>
-        <td><?php echo $strings[12]; ?></td>
+        <td class="secondCol"><?php echo $strings[11]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Slika za tisk:</td>
-        <td><?php echo $strings[13]; ?></td>
+        <td class="secondCol"><?php echo $strings[13]; ?></td>
       </tr>
       <tr>
         <td class="firstCol">Posebni napotki/Želje:</td>
-        <td><?php echo $strings[14]; ?></td>
-      </tr>
-      <tr class="lastRow">
-        <td></td>
-        <td></td>
+        <td class="secondCol"><?php echo $strings[14]; ?></td>
       </tr>
     </table>
   </div>
