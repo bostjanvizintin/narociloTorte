@@ -1,8 +1,28 @@
 <?php
 
 //$strings = explode('Ime in priimek:', $_POST['narocilo'])[1];
-$strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Datum prevzema:|Ura prevzema:|Oblika:|Teža:|Teža \(1KG - 7 OSEB\):|Dekoracija:|Napis:|Okus:|Priložnost:|Slika za tisk:|Posebni napotki\/Želje:)/", $_POST['narocilo'] );
+$strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Datum prevzema:|Ura prevzema:|Oblika:|Teža:|Teža \(1KG - 7 OSEB\):|Dekoracija:|Napis:|Okus:|Priložnost:|Slika za tisk:|Posebni napotki\/Želje:)/", trim($_POST['narocilo']));
+$names = array("Ime in priimek:", "Naslov:", "Telefonska številka:", "Email:", "Datum prevzema:", "Ura prevzema:", "Oblika:", "Teža:", "Dekoracija:", "Napis:", "Okus:", "Priložnost:", "Slika za tisk:", "Posebni napotki\/Želje:");
+$final = array();
 
+array_shift($strings);
+
+
+for ($i=0; $i < count($names); $i++)
+{
+  if(isset($strings[$i]) && strlen(trim($strings[$i])) != 0)
+  {
+    $final[$names[$i]] = $strings[$i];
+  }
+}
+
+if(isset($final["Datum prevzema:"]) && isset($final["Ura prevzema:"]))
+{
+  $dat = $final["Datum prevzema:"];
+  $ura = $final["Ura prevzema:"];
+  unset($final["Ura prevzema:"]);
+  $final["Datum prevzema:"] = $dat." ob ".$ura;
+}
 ?>
 
 
@@ -37,54 +57,17 @@ $strings = preg_split("/(Ime in priimek:|Naslov:|Telefonska številka:|Email:|Da
 
   <div>
     <table class="table table-bordered">
-      <tr>
-        <td class="firstCol">Ime in priimek:</td>
-        <td class="secondCol"><?php echo $strings[1]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Naslov:</td>
-        <td class="secondCol"><?php echo $strings[2]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Telefonska številka:</td>
-        <td class="secondCol"><?php echo $strings[3]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Email:</td>
-        <td class="secondCol"><?php echo $strings[4]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Datum prevzema:</td>
-        <td class="secondCol"><?php echo $strings[5].' / '.$strings[6]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Oblika:</td>
-        <td class="secondCol"><?php echo $strings[7]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Teža:</td>
-        <td class="secondCol"><?php echo $strings[8]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Dekoracija:</td>
-        <td class="secondCol"><?php echo $strings[9]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Napis:</td>
-        <td class="secondCol"><?php echo $strings[10]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Okus:</td>
-        <td class="secondCol"><?php echo $strings[11]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Slika za tisk:</td>
-        <td class="secondCol"><?php echo $strings[13]; ?></td>
-      </tr>
-      <tr>
-        <td class="firstCol">Posebni napotki/Želje:</td>
-        <td class="secondCol"><?php echo $strings[14]; ?></td>
-      </tr>
+
+      <?php
+        foreach ($final as $key => $value)
+        {
+          echo "<tr>";
+          echo "<td class=\"firstCol\">$key</td>";
+          echo "<td class=\"secondCol\">$value</td>";
+          echo "</tr>";
+        }
+        ?>
+
     </table>
   </div>
 <audio src="test.mp3" autoplay="autoplay" loop="loop"></audio>
